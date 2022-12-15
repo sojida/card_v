@@ -92,7 +92,13 @@ class ApplicationServer {
     }
 
     get(path) {
-       console.log('not implemented')
+       this.server.on('request', (req, res) => {
+        this._registerUncaught(res)
+        if(req.url === path && req.method === 'GET') {
+            const resp = this._handle(arguments, req, new Resp(res))
+            res.end(resp)
+        }
+    })
     }
 
     patch(path) {
