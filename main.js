@@ -9,3 +9,4 @@ app.get('/', (httpContract) => httpContract.res.status(200).json({ message: 'app
 app.post('/card', Controller.ValidateCard);
 
 app.listen(port, () => console.log('Listening on post 4000'))
+
